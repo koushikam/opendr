@@ -4,6 +4,7 @@ Author(s): Matthew Loper
 See LICENCE.txt for licensing and contact information.
 """
 __all__ = ['mstack', 'wget']
+import subprocess
 
 def mstack(vs, fs):
     import chumpy as ch
@@ -34,7 +35,6 @@ def wget(url, dest_fname=None):
         contents = urlopen(url).read()
     except:
         raise Exception('Unable to get url: %s' % (url,))
-    print(f'The content is ====>{contents}')
-    print(f'The dest name is ====>{dest_fname}')
-    open(dest_fname, 'wb')#.write(contents)
+    subprocess.run(f'wget {url}')
+#     open(dest_fname, 'wb')#.write(contents)
 #     open(dest_fname, 'w').write(contents)
