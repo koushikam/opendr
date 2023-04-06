@@ -34,7 +34,7 @@ def wget(url, dest_fname=None):
         contents = urlopen(url).read()
     except:
         raise Exception('Unable to get url: %s' % (url,))
-    print(f'The content is ====>{content}')
+    print(f'The content is ====>{contents}')
     print(f'The dest name is ====>{dest_fname}')
     open(dest_fname, 'wb')#.write(contents)
 #     open(dest_fname, 'w').write(contents)
