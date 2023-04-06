@@ -129,8 +129,8 @@ def mac_ext():
         language="c",
         depends=['opendr/contexts/_constants.py', 'opendr/contexts/ctx_mac_internal.h'],
         include_dirs=['.', numpy.get_include()],
-        extra_compile_args=['-Qunused-arguments'],
-        extra_link_args=['-Qunused-arguments'])
+        extra_compile_args=['-Qunused-arguments',"-Wno-error=implicit-function-declaration"],
+        extra_link_args=['-Qunused-arguments',"-Wno-error=implicit-function-declaration"])
 
 
 def main():
