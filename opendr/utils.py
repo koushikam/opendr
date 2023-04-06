@@ -15,6 +15,20 @@ def mstack(vs, fs):
 
     return v, f
 
+def runcmd(cmd, verbose = False, *args, **kwargs):
+
+    process = subprocess.Popen(
+        cmd,
+        stdout = subprocess.PIPE,
+        stderr = subprocess.PIPE,
+        text = True,
+        shell = True
+    )
+    std_out, std_err = process.communicate()
+    if verbose:
+        print(std_out.strip(), std_err)
+    pass
+
 
 def wget(url, dest_fname=None):
     try: #python3
@@ -35,6 +49,7 @@ def wget(url, dest_fname=None):
         contents = urlopen(url).read()
     except:
         raise Exception('Unable to get url: %s' % (url,))
-    subprocess.run(f'wget {url}')
+    runcmd(f"wget {url}", verbose = True)
+#     subprocess.run(f'wget {url}')
 #     open(dest_fname, 'wb')#.write(contents)
 #     open(dest_fname, 'w').write(contents)
