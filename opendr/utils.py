@@ -14,7 +14,7 @@ def mstack(vs, fs):
     v = ch.vstack(vs)
 
     return v, f
-
+# code based on this link: https://www.scrapingbee.com/blog/python-wget/
 def runcmd(cmd, verbose = False, *args, **kwargs):
 
     process = subprocess.Popen(
@@ -49,7 +49,7 @@ def wget(url, dest_fname=None):
         contents = urlopen(url).read()
     except:
         raise Exception('Unable to get url: %s' % (url,))
-    runcmd(f"wget {url}", verbose = True)
+    runcmd(f"wget --directory-prefix={dest_fname} {url}", verbose = True)
 #     subprocess.run(f'wget {url}')
 #     open(dest_fname, 'wb')#.write(contents)
 #     open(dest_fname, 'w').write(contents)
